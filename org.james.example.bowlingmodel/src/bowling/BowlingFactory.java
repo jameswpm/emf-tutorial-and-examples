@@ -40,6 +40,33 @@ public interface BowlingFactory extends EFactory {
 	League createLeague();
 
 	/**
+	 * Returns a new object of class '<em>Tournament</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Tournament</em>'.
+	 * @generated
+	 */
+	Tournament createTournament();
+
+	/**
+	 * Returns a new object of class '<em>Matchup</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Matchup</em>'.
+	 * @generated
+	 */
+	Matchup createMatchup();
+
+	/**
+	 * Returns a new object of class '<em>Game</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Game</em>'.
+	 * @generated
+	 */
+	Game createGame();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

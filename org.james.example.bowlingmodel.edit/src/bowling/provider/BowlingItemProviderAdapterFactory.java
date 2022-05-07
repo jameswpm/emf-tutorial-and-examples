@@ -118,6 +118,75 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link bowling.Tournament} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TournamentItemProvider tournamentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link bowling.Tournament}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTournamentAdapter() {
+		if (tournamentItemProvider == null) {
+			tournamentItemProvider = new TournamentItemProvider(this);
+		}
+
+		return tournamentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link bowling.Matchup} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MatchupItemProvider matchupItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link bowling.Matchup}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMatchupAdapter() {
+		if (matchupItemProvider == null) {
+			matchupItemProvider = new MatchupItemProvider(this);
+		}
+
+		return matchupItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link bowling.Game} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GameItemProvider gameItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link bowling.Game}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGameAdapter() {
+		if (gameItemProvider == null) {
+			gameItemProvider = new GameItemProvider(this);
+		}
+
+		return gameItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -218,6 +287,9 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	public void dispose() {
 		if (playerItemProvider != null) playerItemProvider.dispose();
 		if (leagueItemProvider != null) leagueItemProvider.dispose();
+		if (tournamentItemProvider != null) tournamentItemProvider.dispose();
+		if (matchupItemProvider != null) matchupItemProvider.dispose();
+		if (gameItemProvider != null) gameItemProvider.dispose();
 	}
 
 }

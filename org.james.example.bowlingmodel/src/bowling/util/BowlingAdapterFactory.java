@@ -76,6 +76,18 @@ public class BowlingAdapterFactory extends AdapterFactoryImpl {
 				return createLeagueAdapter();
 			}
 			@Override
+			public Adapter caseTournament(Tournament object) {
+				return createTournamentAdapter();
+			}
+			@Override
+			public Adapter caseMatchup(Matchup object) {
+				return createMatchupAdapter();
+			}
+			@Override
+			public Adapter caseGame(Game object) {
+				return createGameAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -120,6 +132,48 @@ public class BowlingAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLeagueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link bowling.Tournament <em>Tournament</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see bowling.Tournament
+	 * @generated
+	 */
+	public Adapter createTournamentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link bowling.Matchup <em>Matchup</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see bowling.Matchup
+	 * @generated
+	 */
+	public Adapter createMatchupAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link bowling.Game <em>Game</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see bowling.Game
+	 * @generated
+	 */
+	public Adapter createGameAdapter() {
 		return null;
 	}
 

@@ -3,8 +3,10 @@
 package bowling.provider;
 
 
+import bowling.BowlingFactory;
 import bowling.BowlingPackage;
-import bowling.Player;
+import bowling.Tournament;
+import bowling.TournamentType;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,6 +15,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -26,12 +30,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link bowling.Player} object.
+ * This is the item provider adapter for a {@link bowling.Tournament} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class PlayerItemProvider 
+public class TournamentItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -45,7 +49,7 @@ public class PlayerItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PlayerItemProvider(AdapterFactory adapterFactory) {
+	public TournamentItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -60,28 +64,25 @@ public class PlayerItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
-			addDateOfBirthPropertyDescriptor(object);
-			addHeightPropertyDescriptor(object);
-			addIsProfessionalPropertyDescriptor(object);
+			addTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Player_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Player_name_feature", "_UI_Player_type"),
-				 BowlingPackage.Literals.PLAYER__NAME,
+				 getString("_UI_Tournament_type_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Tournament_type_feature", "_UI_Tournament_type"),
+				 BowlingPackage.Literals.TOURNAMENT__TYPE,
 				 true,
 				 false,
 				 false,
@@ -91,80 +92,44 @@ public class PlayerItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Date Of Birth feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDateOfBirthPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Player_dateOfBirth_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Player_dateOfBirth_feature", "_UI_Player_type"),
-				 BowlingPackage.Literals.PLAYER__DATE_OF_BIRTH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(BowlingPackage.Literals.TOURNAMENT__MATCHUPS);
+		}
+		return childrenFeatures;
 	}
 
 	/**
-	 * This adds a property descriptor for the Height feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addHeightPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Player_Height_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Player_Height_feature", "_UI_Player_type"),
-				 BowlingPackage.Literals.PLAYER__HEIGHT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
-	 * This adds a property descriptor for the Is Professional feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIsProfessionalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Player_isProfessional_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Player_isProfessional_feature", "_UI_Player_type"),
-				 BowlingPackage.Literals.PLAYER__IS_PROFESSIONAL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This returns Player.gif.
+	 * This returns Tournament.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Player"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Tournament"));
 	}
 
 	/**
@@ -175,10 +140,11 @@ public class PlayerItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Player)object).getName();
+		TournamentType labelValue = ((Tournament)object).getType();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Player_type") :
-			getString("_UI_Player_type") + " " + label;
+			getString("_UI_Tournament_type") :
+			getString("_UI_Tournament_type") + " " + label;
 	}
 
 
@@ -193,12 +159,12 @@ public class PlayerItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Player.class)) {
-			case BowlingPackage.PLAYER__NAME:
-			case BowlingPackage.PLAYER__DATE_OF_BIRTH:
-			case BowlingPackage.PLAYER__HEIGHT:
-			case BowlingPackage.PLAYER__IS_PROFESSIONAL:
+		switch (notification.getFeatureID(Tournament.class)) {
+			case BowlingPackage.TOURNAMENT__TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case BowlingPackage.TOURNAMENT__MATCHUPS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -214,6 +180,11 @@ public class PlayerItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(BowlingPackage.Literals.TOURNAMENT__MATCHUPS,
+				 BowlingFactory.eINSTANCE.createMatchup()));
 	}
 
 	/**

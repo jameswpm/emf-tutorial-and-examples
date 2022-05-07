@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link bowling.Player#getName <em>Name</em>}</li>
  *   <li>{@link bowling.Player#getDateOfBirth <em>Date Of Birth</em>}</li>
+ *   <li>{@link bowling.Player#getHeight <em>Height</em>}</li>
+ *   <li>{@link bowling.Player#isIsProfessional <em>Is Professional</em>}</li>
  * </ul>
  *
  * @see bowling.BowlingPackage#getPlayer()
@@ -67,5 +69,49 @@ public interface Player extends EObject {
 	 * @generated
 	 */
 	void setDateOfBirth(Date value);
+
+	/**
+	 * Returns the value of the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Height</em>' attribute.
+	 * @see #setHeight(double)
+	 * @see bowling.BowlingPackage#getPlayer_Height()
+	 * @model
+	 * @generated
+	 */
+	double getHeight();
+
+	/**
+	 * Sets the value of the '{@link bowling.Player#getHeight <em>Height</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Height</em>' attribute.
+	 * @see #getHeight()
+	 * @generated
+	 */
+	void setHeight(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Is Professional</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is Professional</em>' attribute.
+	 * @see #setIsProfessional(boolean)
+	 * @see bowling.BowlingPackage#getPlayer_IsProfessional()
+	 * @model
+	 * @generated
+	 */
+	boolean isIsProfessional();
+
+	/**
+	 * Sets the value of the '{@link bowling.Player#isIsProfessional <em>Is Professional</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Professional</em>' attribute.
+	 * @see #isIsProfessional()
+	 * @generated
+	 */
+	void setIsProfessional(boolean value);
 
 } // Player

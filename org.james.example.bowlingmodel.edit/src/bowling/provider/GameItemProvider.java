@@ -4,7 +4,7 @@ package bowling.provider;
 
 
 import bowling.BowlingPackage;
-import bowling.Player;
+import bowling.Game;
 
 import java.util.Collection;
 import java.util.List;
@@ -26,12 +26,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link bowling.Player} object.
+ * This is the item provider adapter for a {@link bowling.Game} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class PlayerItemProvider 
+public class GameItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -45,7 +45,7 @@ public class PlayerItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PlayerItemProvider(AdapterFactory adapterFactory) {
+	public GameItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -60,111 +60,65 @@ public class PlayerItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
-			addDateOfBirthPropertyDescriptor(object);
-			addHeightPropertyDescriptor(object);
-			addIsProfessionalPropertyDescriptor(object);
+			addPlayerPropertyDescriptor(object);
+			addFramesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Player feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addPlayerPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Player_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Player_name_feature", "_UI_Player_type"),
-				 BowlingPackage.Literals.PLAYER__NAME,
+				 getString("_UI_Game_player_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Game_player_feature", "_UI_Game_type"),
+				 BowlingPackage.Literals.GAME__PLAYER,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Date Of Birth feature.
+	 * This adds a property descriptor for the Frames feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDateOfBirthPropertyDescriptor(Object object) {
+	protected void addFramesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Player_dateOfBirth_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Player_dateOfBirth_feature", "_UI_Player_type"),
-				 BowlingPackage.Literals.PLAYER__DATE_OF_BIRTH,
+				 getString("_UI_Game_frames_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Game_frames_feature", "_UI_Game_type"),
+				 BowlingPackage.Literals.GAME__FRAMES,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Height feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addHeightPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Player_Height_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Player_Height_feature", "_UI_Player_type"),
-				 BowlingPackage.Literals.PLAYER__HEIGHT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Is Professional feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIsProfessionalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Player_isProfessional_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Player_isProfessional_feature", "_UI_Player_type"),
-				 BowlingPackage.Literals.PLAYER__IS_PROFESSIONAL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This returns Player.gif.
+	 * This returns Game.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Player"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Game"));
 	}
 
 	/**
@@ -175,10 +129,7 @@ public class PlayerItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Player)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Player_type") :
-			getString("_UI_Player_type") + " " + label;
+		return getString("_UI_Game_type");
 	}
 
 
@@ -193,11 +144,8 @@ public class PlayerItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Player.class)) {
-			case BowlingPackage.PLAYER__NAME:
-			case BowlingPackage.PLAYER__DATE_OF_BIRTH:
-			case BowlingPackage.PLAYER__HEIGHT:
-			case BowlingPackage.PLAYER__IS_PROFESSIONAL:
+		switch (notification.getFeatureID(Game.class)) {
+			case BowlingPackage.GAME__FRAMES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
