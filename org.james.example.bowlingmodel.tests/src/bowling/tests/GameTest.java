@@ -2,11 +2,18 @@
  */
 package bowling.tests;
 
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import bowling.BowlingFactory;
+import bowling.BowlingPackage;
 import bowling.Game;
-
+import bowling.League;
+import bowling.Matchup;
+import bowling.Player;
 import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 /**
@@ -84,6 +91,53 @@ public class GameTest extends TestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+	
+	public void testMatchupGameRef() {
+	   Matchup matchup = BowlingFactory.eINSTANCE.createMatchup();
+	   Game game = BowlingFactory.eINSTANCE.createGame();
+	   matchup.getGames().add(game);
+	   assertEquals(game.getMatchup(), matchup);
+	}
+	
+	public void testMatchupGameRef2() {
+	   Matchup matchup = BowlingFactory.eINSTANCE.createMatchup();
+	   Game game = BowlingFactory.eINSTANCE.createGame();
+	   matchup.getGames().add(game);
+	   assertEquals(game.eContainer(), matchup);
+	}
+	
+	public void testReflection() {
+		EObject eObject = BowlingFactory.eINSTANCE.createPlayer();
+		eObject.eSet(BowlingPackage.eINSTANCE.getPlayer_Name(), "Jonas");
+		Player player = (Player) eObject;
+		assertEquals("Jonas", player.getName());
+	}
+	
+	public void testReflectiveInformation() {
+		League league = BowlingFactory.eINSTANCE.createLeague();
+		assertTrue(league.eClass().getEAllReferences().get(0).isMany());
+		assertTrue(BowlingPackage.eINSTANCE.getLeague_Players().isMany());
+	}
+	
+	public void testValidation() {
+		Matchup matchup = BowlingFactory.eINSTANCE.createMatchup();
+		//each Matchup should include max 2 games
+		matchup.getGames().add(BowlingFactory.eINSTANCE.createGame());
+		matchup.getGames().add(BowlingFactory.eINSTANCE.createGame());
+		matchup.getGames().add(BowlingFactory.eINSTANCE.createGame());
+		
+		Diagnostic validate = Diagnostician.INSTANCE.validate(matchup);
+		assertEquals(Diagnostic.ERROR, validate.getSeverity());
+	}
+	
+	public void testCopy() {
+		Player player = BowlingFactory.eINSTANCE.createPlayer();
+		player.setName("Jonas");
+		Player copy = EcoreUtil.copy(player);
+		assertNotSame(player, copy);
+		assertEquals(player.getName(), copy.getName());
+		
 	}
 
 } //GameTest

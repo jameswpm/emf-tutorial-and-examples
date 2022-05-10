@@ -2,14 +2,8 @@
  */
 package bowling.tests;
 
-import static org.junit.Assert.assertEquals;
-
-import bowling.BowlingFactory;
-import bowling.Game;
-import bowling.Matchup;
 import junit.framework.Test;
 import junit.framework.TestSuite;
-
 import junit.textui.TestRunner;
 
 /**
@@ -46,13 +40,6 @@ public class BowlingAllTests extends TestSuite {
 	 */
 	public BowlingAllTests(String name) {
 		super(name);
-	}
-	
-	public void testMatchupGameRef() {
-	   Matchup matchup = BowlingFactory.eINSTANCE.createMatchup();
-	   Game game = BowlingFactory.eINSTANCE.createGame();
-	   matchup.getGames().add(game);
-	   assertEquals(game.getMatchup(), matchup);
 	}
 
 } //BowlingAllTests
