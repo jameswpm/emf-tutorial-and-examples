@@ -16,8 +16,8 @@
         eType="#//Player" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Tournament">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="matchups" eType="#//Matchup"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="matchups" upperBound="-1"
+        eType="#//Matchup" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TournamentType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Matchup">

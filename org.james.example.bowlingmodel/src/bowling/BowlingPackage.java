@@ -180,7 +180,7 @@ public interface BowlingPackage extends EPackage {
 	int TOURNAMENT = 2;
 
 	/**
-	 * The feature id for the '<em><b>Matchups</b></em>' containment reference.
+	 * The feature id for the '<em><b>Matchups</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -415,10 +415,10 @@ public interface BowlingPackage extends EPackage {
 	EClass getTournament();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link bowling.Tournament#getMatchups <em>Matchups</em>}'.
+	 * Returns the meta object for the containment reference list '{@link bowling.Tournament#getMatchups <em>Matchups</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Matchups</em>'.
+	 * @return the meta object for the containment reference list '<em>Matchups</em>'.
 	 * @see bowling.Tournament#getMatchups()
 	 * @see #getTournament()
 	 * @generated
@@ -612,7 +612,7 @@ public interface BowlingPackage extends EPackage {
 		EClass TOURNAMENT = eINSTANCE.getTournament();
 
 		/**
-		 * The meta object literal for the '<em><b>Matchups</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Matchups</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

@@ -7,14 +7,18 @@ import bowling.Matchup;
 import bowling.Tournament;
 import bowling.TournamentType;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,14 +36,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class TournamentImpl extends MinimalEObjectImpl.Container implements Tournament {
 	/**
-	 * The cached value of the '{@link #getMatchups() <em>Matchups</em>}' containment reference.
+	 * The cached value of the '{@link #getMatchups() <em>Matchups</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMatchups()
 	 * @generated
 	 * @ordered
 	 */
-	protected Matchup matchups;
+	protected EList<Matchup> matchups;
 
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -85,42 +89,11 @@ public class TournamentImpl extends MinimalEObjectImpl.Container implements Tour
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Matchup getMatchups() {
+	public EList<Matchup> getMatchups() {
+		if (matchups == null) {
+			matchups = new EObjectContainmentEList<Matchup>(Matchup.class, this, BowlingPackage.TOURNAMENT__MATCHUPS);
+		}
 		return matchups;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMatchups(Matchup newMatchups, NotificationChain msgs) {
-		Matchup oldMatchups = matchups;
-		matchups = newMatchups;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BowlingPackage.TOURNAMENT__MATCHUPS, oldMatchups, newMatchups);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMatchups(Matchup newMatchups) {
-		if (newMatchups != matchups) {
-			NotificationChain msgs = null;
-			if (matchups != null)
-				msgs = ((InternalEObject)matchups).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BowlingPackage.TOURNAMENT__MATCHUPS, null, msgs);
-			if (newMatchups != null)
-				msgs = ((InternalEObject)newMatchups).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BowlingPackage.TOURNAMENT__MATCHUPS, null, msgs);
-			msgs = basicSetMatchups(newMatchups, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.TOURNAMENT__MATCHUPS, newMatchups, newMatchups));
 	}
 
 	/**
@@ -153,7 +126,7 @@ public class TournamentImpl extends MinimalEObjectImpl.Container implements Tour
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case BowlingPackage.TOURNAMENT__MATCHUPS:
-				return basicSetMatchups(null, msgs);
+				return ((InternalEList<?>)getMatchups()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -179,11 +152,13 @@ public class TournamentImpl extends MinimalEObjectImpl.Container implements Tour
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case BowlingPackage.TOURNAMENT__MATCHUPS:
-				setMatchups((Matchup)newValue);
+				getMatchups().clear();
+				getMatchups().addAll((Collection<? extends Matchup>)newValue);
 				return;
 			case BowlingPackage.TOURNAMENT__TYPE:
 				setType((TournamentType)newValue);
@@ -201,7 +176,7 @@ public class TournamentImpl extends MinimalEObjectImpl.Container implements Tour
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case BowlingPackage.TOURNAMENT__MATCHUPS:
-				setMatchups((Matchup)null);
+				getMatchups().clear();
 				return;
 			case BowlingPackage.TOURNAMENT__TYPE:
 				setType(TYPE_EDEFAULT);
@@ -219,7 +194,7 @@ public class TournamentImpl extends MinimalEObjectImpl.Container implements Tour
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case BowlingPackage.TOURNAMENT__MATCHUPS:
-				return matchups != null;
+				return matchups != null && !matchups.isEmpty();
 			case BowlingPackage.TOURNAMENT__TYPE:
 				return type != TYPE_EDEFAULT;
 		}
