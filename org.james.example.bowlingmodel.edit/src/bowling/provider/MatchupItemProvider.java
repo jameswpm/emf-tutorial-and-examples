@@ -5,6 +5,7 @@ package bowling.provider;
 
 import bowling.BowlingFactory;
 import bowling.BowlingPackage;
+import bowling.Game;
 import bowling.Matchup;
 
 import java.util.Collection;
@@ -12,7 +13,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -110,10 +111,16 @@ public class MatchupItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
+		if (object instanceof Matchup) {
+		   EList<Game> games = ((Matchup) object).getGames();
+		   if (games != null) {
+			   return "Matchup, Games: " + games.size();
+		   }
+		}
 		return getString("_UI_Matchup_type");
 	}
 
