@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.james.example.ppo/src" modelPluginID="org.james.example.ppo"
+    modelName="Primer_PO" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.xsd.ecore.importer" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.xsd.ecore.importer">
+    <details key="sortAttributes" value="false"/>
+  </genAnnotations>
+  <foreignModel>file:/C:/Users/James/eclipse-workspace/EMF_tutorial/Primer_PO.xsd</foreignModel>
+  <genPackages prefix="Ppo" basePackage="org.james.example" resource="XML" disposableProviderFactory="true"
+      ecorePackage="ppo.ecore#/">
+    <genDataTypes ecoreDataType="ppo.ecore#//QuantityType"/>
+    <genDataTypes ecoreDataType="ppo.ecore#//SKU"/>
+    <genClasses ecoreClass="ppo.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ppo.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ppo.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//DocumentRoot/comment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ppo.ecore#//DocumentRoot/oerder"/>
+    </genClasses>
+    <genClasses ecoreClass="ppo.ecore#//Item">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//Item/productName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//Item/quantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//Item/uSPrice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//Item/comment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//Item/shipDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//Item/partNum"/>
+    </genClasses>
+    <genClasses ecoreClass="ppo.ecore#//PurchaseOrder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ppo.ecore#//PurchaseOrder/shipTo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ppo.ecore#//PurchaseOrder/billTo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//PurchaseOrder/comment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ppo.ecore#//PurchaseOrder/items"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//PurchaseOrder/orderDate"/>
+    </genClasses>
+    <genClasses ecoreClass="ppo.ecore#//USAddress">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//USAddress/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//USAddress/street"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//USAddress/city"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//USAddress/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//USAddress/zip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ppo.ecore#//USAddress/country"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
